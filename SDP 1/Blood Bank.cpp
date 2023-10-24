@@ -1,6 +1,7 @@
 #include <iostream>
 #include<bits/stdc++.h>
-#include <string>
+#include <string.h>
+#include <fstream>
 using namespace std;
 
 struct Donor                                      // Structure declaration
@@ -15,21 +16,47 @@ struct Donor                                      // Structure declaration
 const int MAX_DONORS = 100;
 Donor donors[MAX_DONORS];
 int numdonors = 0;
+void savedonerdata()
+{
+    ofstream file("donors.csv");
+    if (file.is_open()) 
+    {
+        for (int i = 0; i < numdonors; i++) {
+            file << donors[i].name << " \t " << donors[i].id<<" \t "<< donors[i].department<<"  "<< donors[i].bloodType << "  " << donors[i].age <<"  "<< donors[i].date<<"  "<< donors[i].num<<"  "<< donors[i].number<<"  " << donors[i].email<<"  "<<endl;
+        }
+        file.close();
+    } else {
+        cout << "Unable to open the file for saving." << endl;
+    }
+}
+void DonorsdataFile() 
+{
+    ifstream file("donors.csv");
 
+    if (file.is_open()) 
+    {
+        numdonors = 0;
+        while (file >> donors[numdonors].name >> donors[numdonors].id >> donors[numdonors].department >> donors[numdonors].bloodType >> donors[numdonors].age>> donors[numdonors].date>> donors[numdonors].num>> donors[numdonors].number>> donors[numdonors].email) 
+        {
+            numdonors++;
+        }
+        file.close();
+    } else {
+        cout << "Unable to open the file. Starting with an empty donor list." << endl;
+    }
+}
 void addDonors()
  {
     if (numdonors < MAX_DONORS) 
     {
         Donor newdonor;
-        cout << "Enter donor name: ";
-        cin>>newdonor.name;
-       // getline(cin,newDonor.name);              //using getline() function
-        cout<<endl;
+        cout << "Enter donor frst name: ";
+        cin>>newdonor.name; 
+        //getline(cin,newdonor.name);             //using getline() function
         cout<<"Enter Your Id: ";
         cin>>newdonor.id;
         cout<<"Enter Your Department: ";
         cin>>newdonor.department;
-        //getline(cin,newDonor.department);        //using getline() function
         cout << "Enter blood type: ";
         cin >> newdonor.bloodType;
         cout << "Enter donor age: ";
@@ -47,8 +74,9 @@ void addDonors()
         numdonors++;
 
         cout << "\t\t\t Donor added successfully!" << endl;
-    } else {
-        cout << "\t\t\t The blood bank is full. Cannot add more donors." << endl;
+        savedonerdata();  // Save donors' data to the file after adding a new donor
+    }else{
+         cout << "\t\t\t The blood bank is full. Cannot add more donors." << endl;
     }
 }
 
@@ -101,8 +129,9 @@ void searchDonors()
 
             cout << "---------------------" << endl;
         }
+        else
+        {cout << " Blood Group not found" << endl;}
     }
-    cout << " Blood Group not found" << endl;
 }
 void updateDonor() {
     string updateinfo;
@@ -127,6 +156,7 @@ void updateDonor() {
 
 
             cout << "\t\t\t Donor information updated!" << endl;
+            savedonerdata();
             return;
         }
     }
@@ -153,6 +183,7 @@ void deleteDonor()
             }
             numdonors--;
             cout <<"\t\t\t"<<deleteName << " Has been deleted from the list." << endl;
+            savedonerdata();
             return;
         }
     }
@@ -163,6 +194,7 @@ void deleteDonor()
 
 int main() 
 {
+    DonorsdataFile();
     int choice;
 
     while (true) 
@@ -180,24 +212,30 @@ int main()
         switch (choice) 
         {
             case 1:
+                system("cls");
                 addDonors();
                 break;
             case 2:
+                system("cls");
                 displayDonors();
                 break;
             case 3:
+             system("cls");
              searchDonors();
                 break;
             case 4:
+            system("cls");
             updateDonor();
                  break;
             case 5:
+            system("cls");
             deleteDonor();
                 break;    
             case 6:
                 cout << "\n\t\t\t Thank You For Visiting Us!" << endl;
                 return 0;
             default:
+                system("cls");
                 cout << "\t\t\t Invalid choice. Please try again." << endl;
         }
     }
