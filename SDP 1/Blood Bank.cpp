@@ -10,7 +10,7 @@ struct Donor                                      // Structure declaration
     int age;                                      // Member (int variable)
     long long int id;                             // Member (long long int variable)
     long long int number;                         // Member (long long int variable)
-    long long int num;
+    long long int num;                            // Member (long long int variable)
 };
 
 const int MAX_DONORS = 100;
@@ -21,8 +21,9 @@ void savedonerdata()
     ofstream file("donors.csv");
     if (file.is_open()) 
     {
-        for (int i = 0; i < numdonors; i++) {
-            file << donors[i].name << " \t " << donors[i].id<<" \t "<< donors[i].department<<"  "<< donors[i].bloodType << "  " << donors[i].age <<"  "<< donors[i].date<<"  "<< donors[i].num<<"  "<< donors[i].number<<"  " << donors[i].email<<"  "<<endl;
+        for (int i = 0; i < numdonors; i++) 
+        {
+            file << donors[i].name << "     " << donors[i].id<<"     "<< donors[i].department<<"     "<< donors[i].bloodType << "     " << donors[i].age <<"     "<< donors[i].date<<"     "<< donors[i].num<<"     "<< donors[i].number<<"     " << donors[i].email<<"  "<<endl;
         }
         file.close();
     } else {
@@ -49,14 +50,17 @@ void addDonors()
  {
     if (numdonors < MAX_DONORS) 
     {
-        Donor newdonor;
+        Donor newdonor;                    // Get user input
         cout << "Enter donor frst name: ";
-        cin>>newdonor.name; 
-        //getline(cin,newdonor.name);             //using getline() function
+       // cin>>newdonor.name; 
+        cin.ignore(); 
+        getline(cin,newdonor.name);             //using getline() function
         cout<<"Enter Your Id: ";
         cin>>newdonor.id;
         cout<<"Enter Your Department: ";
-        cin>>newdonor.department;
+        //cin>>newdonor.department;
+        cin.ignore();
+        getline(cin,newdonor.department);       //using getline() function
         cout << "Enter blood type: ";
         cin >> newdonor.bloodType;
         cout << "Enter donor age: ";
