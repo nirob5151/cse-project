@@ -57,7 +57,9 @@ void addDonors()
         cout<<"Enter Your Id: ";
         cin>>newdonor.id;
         cout<<"Enter Your Department: ";
-        cin>>newdonor.department;
+        //cin>>newdonor.department; 
+        cin.ignore(); 
+        getline(cin,newDonor.department);             //using getline() function
         cout << "Enter blood type: ";
         cin >> newdonor.bloodType;
         cout << "Enter donor age: ";
