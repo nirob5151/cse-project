@@ -52,15 +52,12 @@ void addDonors()
     {
         Donor newdonor;                    // Get user input
         cout << "Enter donor frst name: ";
-       // cin>>newdonor.name; 
-        cin.ignore(); 
-        getline(cin,newdonor.name);             //using getline() function
+        cin>>newdonor.name; 
+        //getline(cin,newdonor.name);             //using getline() function
         cout<<"Enter Your Id: ";
         cin>>newdonor.id;
         cout<<"Enter Your Department: ";
-        //cin>>newdonor.department;
-        cin.ignore();
-        getline(cin,newdonor.department);       //using getline() function
+        cin>>newdonor.department;
         cout << "Enter blood type: ";
         cin >> newdonor.bloodType;
         cout << "Enter donor age: ";
