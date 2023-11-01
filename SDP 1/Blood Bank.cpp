@@ -16,9 +16,9 @@ struct Donor                                      // Structure declaration
 const int MAX_DONORS = 100;
 Donor donors[MAX_DONORS];
 int numdonors = 0;
-void savedonerdata()
+void savedonerdata()   
 {
-    ofstream file("donors.csv");
+    ofstream file("donors.csv");      //add doner info in file
     if (file.is_open()) 
     {
         for (int i = 0; i < numdonors; i++) 
@@ -32,7 +32,7 @@ void savedonerdata()
 }
 void DonorsdataFile() 
 {
-    ifstream file("donors.csv");
+    ifstream file("donors.csv"); // show doner info
 
     if (file.is_open()) 
     {
@@ -50,43 +50,42 @@ void addDonors()
  {
     if (numdonors < MAX_DONORS) 
     {
-        Donor newdonor;                    // Get user input
+        Donor newdonor;                        // Get user input
         cout << "Enter donor frst name: ";
        // cin>>newdonor.name; 
         cin.ignore(); 
         getline(cin,newdonor.name);             //using getline() function
-        cout<<"Enter Your Id: ";
+        cout<<"Enter Your Id: ";                //input user student id
         cin>>newdonor.id;
-        cout<<"Enter Your Department: ";
+        cout<<"Enter Your Department: ";        //input user department
         //cin>>newdonor.department;
         cin.ignore();
         getline(cin,newdonor.department);       //using getline() function
-        cout << "Enter blood type: ";
+        cout << "Enter blood type: ";           //input user blood type
         cin >> newdonor.bloodType;
-        cout << "Enter donor age: ";
+        cout << "Enter donor age: ";            //input user age
         cin >> newdonor.age;
-        cout<<"Enter Last Date Of Donation: ";
+        cout<<"Enter Last Date Of Donation: ";  //input user last date of donation
         cin>>newdonor.date;
-        cout<<"Enter Number Of Donation: ";
+        cout<<"Enter Number Of Donation: ";     //input user number of donation
         cin>>newdonor.num;
-        cout<<"Enter Your Phone No: ";
+        cout<<"Enter Your Phone No: ";          //input user phone number
         cin>>newdonor.number;
-        cout<<"Enter Your Email: ";
+        cout<<"Enter Your Email: ";             //input user email
         cin>>newdonor.email;
 
         donors[numdonors] = newdonor;
         numdonors++;
 
-        cout << "\t\t\t Donor added successfully!" << endl;
+        cout << "\t\t\t Donor added successfully!" << endl; //after add doner to show this
         savedonerdata();  // Save donors' data to the file after adding a new donor
     }else{
-         cout << "\t\t\t The blood bank is full. Cannot add more donors." << endl;
+         cout << "\t\t\t The blood bank is full. Cannot add more donors." << endl;  //after don't add doner
     }
 }
-
 void displayDonors()
  {
-    cout << "::Donor List::" << endl;
+    cout << "::Donor List::" << endl;                      //display all donor info
     cout << "---------------" << endl;
     for (int i = 0; i < numdonors; i++) 
     {
@@ -104,7 +103,6 @@ void displayDonors()
         cout << "---------------------" << endl;
     }
 }
-
 void searchDonors() 
 {
     string search;
@@ -118,7 +116,7 @@ void searchDonors()
     cout << "------------------" << endl;
     for (int i = 0; i < numdonors; i++)
      {
-        if (donors[i].bloodType == search)   //donors[i].name == search || donors[i].id == search
+        if (donors[i].bloodType == search)   //donors[i].name == search || donors[i].id == search   // search any of this user info
         {
             cout << "Donor " << i + 1 << ":" << endl;
             cout << "Name: " << donors[i].name << endl;
@@ -132,9 +130,8 @@ void searchDonors()
             cout<<"Email: "<<donors[i].email<<endl;
 
             cout << "---------------------" << endl;
-        }
-        else
-        {cout << " Blood Group not found" << endl;}
+        }else{
+            cout << " Blood Group not found" << endl;}
     }
 }
 void updateDonor() {
@@ -149,7 +146,7 @@ void updateDonor() {
     
     for (int i = 0; i < numdonors; i++) 
     {
-        if (donors[i].name == updateinfo) 
+        if (donors[i].name == updateinfo)     //upadet doner info
         {
             cout << "Enter the new Last Date Of Donation " << updateinfo << ": ";
             cin >> donors[i].date;
@@ -157,8 +154,6 @@ void updateDonor() {
             cin >> donors[i].age;
             cout << "Enter the new Number Of Donation " << updateinfo << ": ";
             cin >> donors[i].num;
-
-
             cout << "\t\t\t Donor information updated!" << endl;
             savedonerdata();
             return;
@@ -178,10 +173,10 @@ void deleteDonor()
         cout<<"\t\t\t: ";
     cin >> deleteName;
     for (int i = 0; i < numdonors; i++) {
-        if (donors[i].name == deleteName) 
+        if (donors[i].name == deleteName)               // delete doners info
         {
             
-            for (j = i; j < numdonors - 1; j++)     // Shift donors to remove the deleted donor
+            for (j = i; j < numdonors - 1; j++)    
              {
                 donors[j] = donors[j + 1];
             }
@@ -191,11 +186,8 @@ void deleteDonor()
             return;
         }
     }
-    
     cout << "\t\t\t Donor not found. Could not delete." << endl;
 }
-
-
 int main() 
 {
     DonorsdataFile();
