@@ -3,7 +3,6 @@
 #include <string.h>
 #include <fstream>
 using namespace std;
-
 struct Donor                                      // Structure declaration
 {
     string name,department,email,bloodType,date;  // Member (string variable)
@@ -16,7 +15,7 @@ struct Donor                                      // Structure declaration
 const int MAX_DONORS = 100;
 Donor donors[MAX_DONORS];
 int numdonors = 0;
-void savedonerdata()   
+void savedonerdata()     //save data for doner info in file.function
 {
     ofstream file("donors.csv");      //add doner info in file
     if (file.is_open()) 
@@ -30,7 +29,7 @@ void savedonerdata()
         cout << "Unable to open the file for saving." << endl;
     }
 }
-void DonorsdataFile() 
+void DonorsdataFile()     //show doner info from file. function
 {
     ifstream file("donors.csv"); // show doner info
 
@@ -43,10 +42,10 @@ void DonorsdataFile()
         }
         file.close();
     } else {
-        cout << "Unable to open the file. Starting with an empty donor list." << endl;
+        cout << "Unable to open the file.Doner List Is Empty" << endl;
     }
 }
-void addDonors()
+void addDonors()             //add doner info in this function
  {
     if (numdonors < MAX_DONORS) 
     {
@@ -83,7 +82,7 @@ void addDonors()
          cout << "\t\t\t The blood bank is full. Cannot add more donors." << endl;  //after don't add doner
     }
 }
-void displayDonors()
+void displayDonors()    //display doner info in this function
  {
     cout << "::Donor List::" << endl;                      //display all donor info
     cout << "---------------" << endl;
@@ -103,7 +102,7 @@ void displayDonors()
         cout << "---------------------" << endl;
     }
 }
-void searchDonors() 
+void searchDonors()  //search doner info fanction
 {
     string search;
     cout<<"\n\t\t========================================";
@@ -134,7 +133,8 @@ void searchDonors()
             cout << " Blood Group not found" << endl;}
     }
 }
-void updateDonor() {
+void updateDonor()                  // update donar info function
+{
     string updateinfo;
     cout<<"\n\t\t=====================================================";
         cout<<"\n\t\t|   Enter The Name of The Donor You Want to Update   |"<<endl;
@@ -162,7 +162,7 @@ void updateDonor() {
     
     cout << "\t\t\t Donor not found. Could not update." << endl;
 }
-void deleteDonor()
+void deleteDonor()                  // delete doner function 
  {
     string deleteName;
     int j;
@@ -212,7 +212,7 @@ int main()
                 addDonors();
                 break;
             case 2:
-                system("cls");
+                system("cls");   //system clear
                 displayDonors();
                 break;
             case 3:
