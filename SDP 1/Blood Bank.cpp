@@ -50,7 +50,7 @@ void addDonors()             //add doner info in this function
     if (numdonors < MAX_DONORS) 
     {
         Donor newdonor;                        // Get user input
-        cout << "Enter donor frst name: ";
+        cout << "Enter donor name: ";
        // cin>>newdonor.name; 
         cin.ignore(); 
         getline(cin,newdonor.name);             //using getline() function
