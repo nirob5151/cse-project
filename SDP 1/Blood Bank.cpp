@@ -68,8 +68,9 @@ int getNumericInput() {
 void addDonors()             //add doner info in this function
  {
     cout<<"\n\t\t=============================================";
-        cout<<"\n\t\t|   Enter Your Information for Your Profile   |"<<endl;
-        cout<<"\t\t===============================================";
+        cout<<"\n\t\t|   Enter Your Information for Your Profile |"<<endl;
+        cout<<"\t\t=============================================";
+        cout<<endl;
         cout<<endl;
     // getNumericInput()
     if (numdonors < MAX_DONORS)
@@ -234,10 +235,10 @@ while(goal>clock());
 void Welcome() 
 {
     // Setting console color
-    system("COLOR 01 ");
+    system("COLOR 00 ");
 
-    // Loading animation
-    char load[1][20] = {"LOADING...."};
+    // Blood Bank Animation
+    char load[1][100] = {"Tomar Rokto Nimu ...."};
     for (int i = 0; i < 2; i++) {
         cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t    ";
         for (int j = 0; load[i][j] != '\0'; j++) {
@@ -252,25 +253,25 @@ void Welcome()
     system("cls");
 
     // Displaying a border
-    cout << "\n\t\t\t\t\t*";
-    for (int str = 1; str < 35; str++) {
+    cout << "\n\t\t\t\t*";
+    for (int str = 1; str < 54; str++) {
         delay(50);
         cout << "*";
     }
 
     // Displaying project name
-    char prjct[30] = {"Tomar Rokto Nimu \n"};
-    cout << "\n\n\t\t\t\t\t";
+    char prjct[300] = {"Simple Blood Bank Managment System "};
+    cout << "\n\n\t\t\t";
     for (int i = 0; prjct[i] != '\0'; i++) {
         cout << " ";
-        delay(50);
+        delay(100);
         cout << prjct[i];
     }
 
     cout << "\n";
     delay(250);
-    cout << "\n\t\t\t\t\t*";
-    for (int str = 1; str < 35; str++) {
+    cout << "\n\t\t\t\t*";
+    for (int str = 1; str < 54; str++) {
         delay(50);
         cout << "*";
     }
@@ -381,4 +382,5 @@ int main()
     }
 
     return 0;
+
 }
