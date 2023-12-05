@@ -25,7 +25,7 @@ void savedonerdata()     //save data for doner info in file.function
     {
         for (int i = 0; i < numdonors; i++)
         {
-            file << donors[i].name << "     " << donors[i].id<<"     "<< donors[i].department<<"     "<< donors[i].bloodType << "     " << donors[i].age <<"     "<< donors[i].date<<"     "<< donors[i].num<<"     "<< donors[i].number<<"     " << donors[i].email<<"  "<<endl;
+            file << donors[i].name << "  " << donors[i].id<<"  "<< donors[i].department<<"  "<< donors[i].bloodType << "  " << donors[i].age <<"  "<< donors[i].date<<"  "<< donors[i].num<<"  "<< donors[i].number<<"  " << donors[i].email<<"  "<<endl;
         }
         file.close();
     } else {
@@ -50,8 +50,8 @@ void DonorsdataFile()     //show doner info from file. function
 }
 
 // Add this function for input validation
-int getNumericInput() {
-    int input;
+long long int  getNumericInput() {
+    long long int input;
     while (true) {
         cin >> input;
         if (cin.fail()) {
@@ -72,7 +72,6 @@ void addDonors()             //add doner info in this function
         cout<<"\t\t=============================================";
         cout<<endl;
         cout<<endl;
-    // getNumericInput()
     if (numdonors < MAX_DONORS)
     {
         Donor newdonor;                        // Get user input
@@ -99,8 +98,8 @@ void addDonors()             //add doner info in this function
         //cin >> newdonor.age;
         
         cout<<"Enter Last Date Of Donation: ";  //input user last date of donation
-        newdonor.date = getNumericInput();
-        //cin>>newdonor.date;
+        //newdonor.date = getNumericInput();
+        cin>>newdonor.date;
 
         cout<<"Enter Number Of Donation: ";     //input user number of donation
         newdonor.num = getNumericInput();
@@ -176,7 +175,7 @@ void searchDonors()  //search doner info fanction
 
 void updateDonor()                  // update donar info function
 {
-    string updateinfo;
+    long long int updateinfo;
     cout<<"\n\t\t=====================================================";
         cout<<"\n\t\t|   Enter The Name of The Donor You Want to Update   |"<<endl;
         cout<<"\t\t====================================================";
@@ -186,10 +185,11 @@ void updateDonor()                  // update donar info function
 
     for (int i = 0; i < numdonors; i++)
     {
-        if (donors[i].name == updateinfo)     //upadet doner info
+        if (donors[i].id == updateinfo)     //upadet doner info
         {
-            cout << "Enter the new Last Date Of Donation " << updateinfo << ": ";
-            donors[i].date = getNumericInput();
+            cout << "Enter the new Last Date Of Donation "<< updateinfo << ": ";
+            //donors[i].date = getNumericInput();
+            cin>>donors[i].date;
             cout << "Enter the new age for " << updateinfo << ": ";
             donors[i].age = getNumericInput();
             cout << "Enter the new Number Of Donation " << updateinfo << ": ";
@@ -204,16 +204,16 @@ void updateDonor()                  // update donar info function
 }
 void deleteDonor()                  // delete doner function
  {
-    string deleteName;
+    long long int deleteprofile;
     int j;
     cout<<"\n\t\t=====================================================";
-        cout<<"\n\t\t|   Enter The Name of The Donor You Want to Delete  |"<<endl;
+        cout<<"\n\t\t|   Enter The Id of The Donor You Want to Delete  |"<<endl;
         cout<<"\t\t====================================================";
         cout<<endl;
         cout<<"\t\t\t: ";
-    cin >> deleteName;
+    cin >> deleteprofile;
     for (int i = 0; i < numdonors; i++) {
-        if (donors[i].name == deleteName)               // delete doners info
+        if (donors[i].id == deleteprofile)               // delete doners info
         {
 
             for (j = i; j < numdonors - 1; j++)
@@ -221,7 +221,7 @@ void deleteDonor()                  // delete doner function
                 donors[j] = donors[j + 1];
             }
             numdonors--;
-            cout <<"\t\t\t"<<deleteName << " Has been deleted from the list." << endl;
+            cout <<"\t\t\t"<<deleteprofile << " Has been deleted from the list." << endl;
             savedonerdata();
             return;
         }
