@@ -20,12 +20,12 @@ Donor donors[MAX_DONORS];
 int numdonors = 0;
 void savedonerdata()     //save data for doner info in file.function
 {
-    ofstream file("donors.csv");      //add doner info in file
+    ofstream file("D:\\Cse Project\\SDP 1\\donors.csv");      //add doner info in file
     if (file.is_open())
     {
         for (int i = 0; i < numdonors; i++)
         {
-            file << donors[i].name << "  " << donors[i].id<<"  "<< donors[i].department<<"  "<< donors[i].bloodType << "  " << donors[i].age <<"  "<< donors[i].date<<"  "<< donors[i].num<<"  "<< donors[i].number<<"  " << donors[i].email<<"  "<<endl;
+            file << donors[i].name << "\t" << donors[i].id<<"\t"<< donors[i].department<<"\t"<< donors[i].bloodType << "\t" << donors[i].age <<"\t"<< donors[i].date<<"\t"<< donors[i].num<<"\t"<< donors[i].number<<"\t" << donors[i].email<<endl;
         }
         file.close();
     } else {
@@ -34,7 +34,7 @@ void savedonerdata()     //save data for doner info in file.function
 }
 void DonorsdataFile()     //show doner info from file. function
 {
-    ifstream file("donors.csv"); // show doner info
+    ifstream file("D:\\Cse Project\\SDP 1\\donors.csv"); // show doner info
 
     if (file.is_open())
     {
@@ -91,7 +91,6 @@ void addDonors()             //add doner info in this function
 
         cout << "Enter blood type: ";           //input user blood type
         cin >> newdonor.bloodType;
-       // cout << "Enter donor age: ";
 
         cout << "Enter donor age: ";
         newdonor.age = getNumericInput();           //input user age
@@ -177,7 +176,7 @@ void updateDonor()                  // update donar info function
 {
     long long int updateinfo;
     cout<<"\n\t\t=====================================================";
-        cout<<"\n\t\t|   Enter The Name of The Donor You Want to Update   |"<<endl;
+        cout<<"\n\t\t|   Enter The Id of The Donor You Want to Update   |"<<endl;
         cout<<"\t\t====================================================";
         cout<<endl;
         cout<<"\t\t\t: ";
@@ -187,13 +186,14 @@ void updateDonor()                  // update donar info function
     {
         if (donors[i].id == updateinfo)     //upadet doner info
         {
-            cout << "Enter the new Last Date Of Donation "<< updateinfo << ": ";
+            cout<<"Donor Name:"<<donors[i].name<<endl;
+            cout << "Enter the new Last Date Of Donation : ";//<< updateinfo << ": ";
             //donors[i].date = getNumericInput();
             cin>>donors[i].date;
             cout << "Enter the new age for " << updateinfo << ": ";
             donors[i].age = getNumericInput();
             cout << "Enter the new Number Of Donation " << updateinfo << ": ";
-             donors[i].num = getNumericInput();;
+            donors[i].num = getNumericInput();
             cout << "\t\t\t Donor information updated!" << endl;
             savedonerdata();
             return;
@@ -242,7 +242,7 @@ void Welcome()
     for (int i = 0; i < 2; i++) {
         cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t    ";
         for (int j = 0; load[i][j] != '\0'; j++) {
-            delay(350);
+            delay(100);
             cout << load[i][j];
         }
     }
